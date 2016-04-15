@@ -1,0 +1,12 @@
+﻿@model IEnumerable<BookStore.WebSite.Areas.CustomerSite.Models.CategoryViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+<ul>
+@foreach (var category in Model)
+{
+    <li><a href="@category.Url">@category.Title</a></li>
+}
+
+</ul>

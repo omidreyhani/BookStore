@@ -13,16 +13,16 @@ namespace BookStore.WebSite.Areas.CustomerSite.Controllers
         // GET: CustomerSite/Home
         public HomeController(HomeWorkerService homeWorkerService)
         {
-            if(WorkerService == null)
+            if(homeWorkerService == null)
                 throw new ArgumentNullException("workerService");
 
             WorkerService = homeWorkerService;
         }
         public ActionResult Index()
         {
-            WorkerService.GetCategoryViewModel();
+            var model = WorkerService.GetCategoryViewModel();
 
-            return View();
+            return View(model);
         }
 
     }

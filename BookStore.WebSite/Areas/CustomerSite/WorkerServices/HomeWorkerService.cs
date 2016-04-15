@@ -10,16 +10,16 @@ namespace BookStore.WebSite.Areas.CustomerSite.WorkerServices
 {
     public class HomeWorkerService
     {
-        private IDataBase _dataBase;
+        private readonly IDatabase _database;
 
-        public HomeWorkerService(IDataBase dataBase)
+        public HomeWorkerService(IDatabase database)
         {
-            _dataBase = dataBase;
+            _database = database;
         }
 
         public IEnumerable<CategoryViewModel> GetCategoryViewModel()
         {
-            return from c in _dataBase.Categories
+            return from c in _database.Categories
                 select new CategoryViewModel()
                 {
                     Title = c.Title,
