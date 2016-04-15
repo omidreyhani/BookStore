@@ -32,8 +32,10 @@ namespace BookStore.WebSite
 
 
             builder.RegisterType<HomeWorkerService>();
+            builder.RegisterType<SearchWorkerService>();
 
             builder.RegisterType<Database>().As<IDatabase>();
+            builder.RegisterType<Search.QueryStack.Database>().As<Search.QueryStack.IDatabase>();
         }
 
     }

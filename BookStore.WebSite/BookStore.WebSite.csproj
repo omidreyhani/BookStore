@@ -187,8 +187,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\CustomerSite\Controllers\HomeController.cs" />
+    <Compile Include="Areas\CustomerSite\Controllers\SearchController.cs" />
     <Compile Include="Areas\CustomerSite\CustomerSiteAreaRegistration.cs" />
+    <Compile Include="Areas\CustomerSite\Models\BookViewModel.cs" />
     <Compile Include="Areas\CustomerSite\Models\CategoryViewModel.cs" />
+    <Compile Include="Areas\CustomerSite\WorkerServices\SearchWorkerService.cs" />
     <Compile Include="Areas\CustomerSite\WorkerServices\HomeWorkerService.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
@@ -264,6 +267,7 @@
     <Content Include="Areas\CustomerSite\Views\_ViewStart.cshtml" />
     <Content Include="Areas\CustomerSite\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\CustomerSite\Views\Home\Index.cshtml" />
+    <Content Include="Areas\CustomerSite\Views\Search\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -306,6 +310,10 @@
     <ProjectReference Include="..\BookStore.Category.QueryStack\BookStore.Category.QueryStack.csproj">
       <Project>{352e82ff-4b41-4b51-9eb7-deb1173181c2}</Project>
       <Name>BookStore.Category.QueryStack</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BookStore.Search.QueryStack\BookStore.Search.QueryStack.csproj">
+      <Project>{be46f0c2-ae95-4315-8e9e-a059010d7576}</Project>
+      <Name>BookStore.Search.QueryStack</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
