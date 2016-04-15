@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace BookStore.Category.QueryStack
 {
-    public class Class1
+    public interface IDatabase 
     {
+        IQueryable<Model.Category> Categories { get; }
     }
 }
