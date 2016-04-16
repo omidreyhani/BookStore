@@ -5,10 +5,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace BookStore.Saxo.ProductService.Test
 {
     [TestClass]
-    public class UnitTestProductApi
+    public class WhenITestProductApi
     {
         [TestMethod]
-        public void TestGet()
+        public void GetWorksCorrectly()
         {
             ProdcutApi api =new ProdcutApi();
             var result  = api.Get(new [] {"9788741201122","9788702168044"});

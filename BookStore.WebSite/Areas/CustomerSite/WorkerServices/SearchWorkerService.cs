@@ -21,9 +21,9 @@ namespace BookStore.WebSite.Areas.CustomerSite.WorkerServices
 
         public IEnumerable<BookViewModel> GetBooksViewModel(string[] isbns)
         {
-            var arr = isbns;
-            _bus.Execute(new UpdateCommand(arr));
-            return from c in _queryRepository.Get(arr)
+            _bus.Execute(new UpdateCommand(isbns));
+            var query =_queryRepository.Get(isbns);
+            return from c in query 
                    select new BookViewModel()
                    {
                        Title = c.Title,
