@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Web.Http;
+using BookStore.Infrastructure;
+using BookStore.Infrastructure.Command;
 using BookStore.Search.QueryStack;
 using BookStore.WebSite.Areas.CustomerSite.Models;
 
@@ -7,22 +10,26 @@ namespace BookStore.WebSite.Areas.CustomerSite.WorkerServices
 {
     public class SearchWorkerService
     {
-        private readonly IDatabase _database;
+        private readonly IQueryRepository _queryRepository;
+        private readonly IBus _bus;
 
-        public SearchWorkerService(IDatabase database)
+        public SearchWorkerService(IQueryRepository queryRepository, IBus bus)
         {
-            _database = database;
+            _queryRepository = queryRepository;
+            _bus = bus;
         }
 
-        public IEnumerable<BookViewModel> GetBooksViewModel(string isbns)
+        public IEnumerable<BookViewModel> GetBooksViewModel(string[] isbns)
         {
-            return from c in _database.Books
-                select new BookViewModel()
-                {
-                    Title = c.Title,
-                    Url = c.Url,
-                    TotalItems = c.TotalItems
-                };
+            var arr = isbns;
+            _bus.Execute(new UpdateCommand(arr));
+            return from c in _queryRepository.Get(arr)
+                   select new BookViewModel()
+                   {
+                       Title = c.Title,
+                       Url = c.Url,
+                       Imageurl = c.Imageurl
+                   };
         }
     }
 }

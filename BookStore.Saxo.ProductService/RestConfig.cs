@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Configuration;
 
 namespace BookStore.Saxo.ProductService
 {
@@ -12,6 +7,11 @@ namespace BookStore.Saxo.ProductService
         public static string GetUrl()
         {
             return ConfigurationManager.AppSettings["saxo:product:url"];
+        }
+
+        public static string GetKey()
+        {
+            return ConfigurationManager.AppSettings["saxo:product:key"];
         }
     }
 }

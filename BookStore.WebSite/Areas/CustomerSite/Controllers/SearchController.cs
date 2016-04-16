@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 using BookStore.WebSite.Areas.CustomerSite.WorkerServices;
 
@@ -10,7 +8,6 @@ namespace BookStore.WebSite.Areas.CustomerSite.Controllers
     public class SearchController : Controller
     {
         public SearchWorkerService WorkerService { get; private set; }
-        // GET: CustomerSite/Home
         public SearchController(SearchWorkerService searchWorkerService)
         {
             if (searchWorkerService == null)
@@ -23,9 +20,11 @@ namespace BookStore.WebSite.Areas.CustomerSite.Controllers
             return View();
         }
 
-        public ActionResult GetBooksByISBNs(string isbns)
+        //{isbns :['9788741201122','9788702168044']}
+        [System.Web.Mvc.HttpPost]
+        public ActionResult GetBooksByIsbns(string[] isbns)
         {
-            return Json(WorkerService.GetBooksViewModel(isbns));
+            return Json(WorkerService.GetBooksViewModel(isbns),JsonRequestBehavior.AllowGet);
         }
     }
 }

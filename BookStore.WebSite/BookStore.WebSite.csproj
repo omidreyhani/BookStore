@@ -179,20 +179,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\AutofacConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Areas\CustomerSite\Controllers\HomeController.cs" />
+    <Compile Include="Areas\CustomerSite\Commands\UpdateCommandHandler.cs" />
     <Compile Include="Areas\CustomerSite\Controllers\SearchController.cs" />
     <Compile Include="Areas\CustomerSite\CustomerSiteAreaRegistration.cs" />
     <Compile Include="Areas\CustomerSite\Models\BookViewModel.cs" />
     <Compile Include="Areas\CustomerSite\Models\CategoryViewModel.cs" />
     <Compile Include="Areas\CustomerSite\WorkerServices\SearchWorkerService.cs" />
-    <Compile Include="Areas\CustomerSite\WorkerServices\HomeWorkerService.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
     <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
@@ -307,9 +305,21 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BookStore.Category.QueryStack\BookStore.Category.QueryStack.csproj">
-      <Project>{352e82ff-4b41-4b51-9eb7-deb1173181c2}</Project>
-      <Name>BookStore.Category.QueryStack</Name>
+    <ProjectReference Include="..\BookStore.Autofac\BookStore.Autofac.csproj">
+      <Project>{06826FF8-FC31-44A6-8882-BDA1DCAB858C}</Project>
+      <Name>BookStore.Autofac</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BookStore.Infrastructure\BookStore.Infrastructure.csproj">
+      <Project>{1b959729-b731-4938-8daa-045a26ef53aa}</Project>
+      <Name>BookStore.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BookStore.Saxo.ProductService\BookStore.Saxo.ProductService.csproj">
+      <Project>{4465B06B-89EA-4CC9-8A7F-4522EFFF64AE}</Project>
+      <Name>BookStore.Saxo.ProductService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BookStore.Search.CommandStack\BookStore.Search.CommandStack.csproj">
+      <Project>{449EC68E-07AE-483B-9259-3353700EE11E}</Project>
+      <Name>BookStore.Search.CommandStack</Name>
     </ProjectReference>
     <ProjectReference Include="..\BookStore.Search.QueryStack\BookStore.Search.QueryStack.csproj">
       <Project>{be46f0c2-ae95-4315-8e9e-a059010d7576}</Project>

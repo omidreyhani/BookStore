@@ -49,15 +49,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IQueryRepository.cs" />
     <Compile Include="SearchContext.cs" />
     <Compile Include="Model\Book.cs" />
-    <Compile Include="Database.cs" />
-    <Compile Include="IDataBase.cs" />
+    <Compile Include="QueryRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BookStore.Infrastructure\BookStore.Infrastructure.csproj">
+      <Project>{1b959729-b731-4938-8daa-045a26ef53aa}</Project>
+      <Name>BookStore.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BookStore.Search.CommandStack\BookStore.Search.CommandStack.csproj">
+      <Project>{449EC68E-07AE-483B-9259-3353700EE11E}</Project>
+      <Name>BookStore.Search.CommandStack</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
