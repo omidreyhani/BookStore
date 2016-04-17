@@ -1,29 +1,25 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using BookStore.Infrastructure;
-using BookStore.Infrastructure.Command;
+﻿using System.Linq;
 using BookStore.Search.QueryStack.Model;
 
 namespace BookStore.Search.QueryStack
 {
     public class QueryRepository:IQueryRepository
     {
-        private readonly SearchContext _searchContext;
+        private readonly QuerySearchContext _searchContext;
 
         public QueryRepository()
         {
-            _searchContext = new SearchContext();
+            _searchContext = new QuerySearchContext();
         }
 
         public IQueryable<Book> Get(string[] isbns)
         {
-         
-            return _searchContext.Books.Where(x => isbns.Any(y => y == x.Isbn13));
+            return _searchContext.Books.AsNoTracking().Where(x => isbns.Contains(x.Isbn13));
         }
 
         public IQueryable<Book> Get()
         {
-            return _searchContext.Books;
+            return _searchContext.Books.AsNoTracking();
         }
     }
 }

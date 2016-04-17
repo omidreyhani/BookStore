@@ -1,28 +1,32 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web.Http;
-using BookStore.Infrastructure;
-using BookStore.Infrastructure.Command;
+using BookStore.Search.CommandStack.Commands;
+using BookStore.Search.CommandStack.Sagas;
 using BookStore.Search.QueryStack;
 using BookStore.WebSite.Areas.CustomerSite.Models;
+using Memento.Messaging.Postie;
 
 namespace BookStore.WebSite.Areas.CustomerSite.WorkerServices
 {
     public class SearchWorkerService
     {
         private readonly IQueryRepository _queryRepository;
-        private readonly IBus _bus;
+        readonly IUpdateCommandHandler _updateCommandHandler;
 
-        public SearchWorkerService(IQueryRepository queryRepository, IBus bus)
+        public SearchWorkerService(IQueryRepository queryRepository, IUpdateCommandHandler updateCommandHandler)
         {
             _queryRepository = queryRepository;
-            _bus = bus;
+            _updateCommandHandler = updateCommandHandler;
         }
 
         public IEnumerable<BookViewModel> GetBooksViewModel(string[] isbns)
         {
-            _bus.Execute(new UpdateCommand(isbns));
+            if(isbns == null || isbns.Length==0) return null;
+
+            _updateCommandHandler.Execute(new UpdateCommand(isbns));
+
             var query =_queryRepository.Get(isbns);
+
             return from c in query 
                    select new BookViewModel()
                    {

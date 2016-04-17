@@ -1,14 +1,10 @@
-﻿using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Transactions;
-using BookStore.Infrastructure;
-using BookStore.Infrastructure.Command;
+﻿using System.Linq;
 using BookStore.Saxo.ProductService;
 using BookStore.Search.CommandStack;
-using BookStore.WebSite.Areas.CustomerSite.Commands;
+using BookStore.Search.CommandStack.Commands;
+using BookStore.Search.CommandStack.Sagas;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
 
 namespace BookStore.Search.QueryStack.Test
 {
@@ -25,13 +21,11 @@ namespace BookStore.Search.QueryStack.Test
         [TestMethod]
         public void CachingWorksCorrectly()
         {
-            var bus = new Bus();
-            bus.RegisterCommand(new UpdateCommandHandler(new ProdcutApi(), new QueryRepository(), new UnitOfWork()));
-
             var repository = new QueryRepository();
             var count = repository.Get().Count();
             var isbns = new[] { "9788741201122" };
-            bus.Execute(new UpdateCommand(isbns));
+            var command= new UpdateCommand(isbns);
+            (new UpdateCommandHandler(new FakeProductApi(), new UnitOfWork())).Execute(command); 
             repository.Get().Count().Should().Be(count + 1);
         }
     }

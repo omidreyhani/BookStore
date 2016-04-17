@@ -3,24 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Autofac;
 
 namespace BookStore.Infrastructure
 {
     public class Bus:IBus
     {
-        readonly List<ICommandHandler> _commandHandlers= new List<ICommandHandler>();
+        readonly List<Type> _commandHandlers = new List<Type>();
+        public IContainer Container { get; set; }
 
         public void Execute(ICommand command)
         {
             foreach (var handler in _commandHandlers)
             {
-               handler.Handle(command); 
+                ICommandHandler a =(ICommandHandler) Container.Resolve(handler);
+               a.Handle(command); 
             }
         }
 
-        public void RegisterCommand(ICommandHandler commandHandler)
+        public void RegisterCommandHandler<T>() where T : ICommandHandler
         {
-           _commandHandlers.Add(commandHandler); 
+           _commandHandlers.Add(typeof(T)); 
         }
     }
 }

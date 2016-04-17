@@ -54,6 +54,7 @@
     <Compile Include="Model\Book.cs" />
     <Compile Include="QueryRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchContextDatabaseInitializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -63,10 +64,6 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BookStore.Infrastructure\BookStore.Infrastructure.csproj">
-      <Project>{1b959729-b731-4938-8daa-045a26ef53aa}</Project>
-      <Name>BookStore.Infrastructure</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BookStore.Search.CommandStack\BookStore.Search.CommandStack.csproj">
       <Project>{449EC68E-07AE-483B-9259-3353700EE11E}</Project>
       <Name>BookStore.Search.CommandStack</Name>

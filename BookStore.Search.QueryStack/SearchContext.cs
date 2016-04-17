@@ -3,15 +3,15 @@ using BookStore.Search.QueryStack.Model;
 
 namespace BookStore.Search.QueryStack
 {
-    class SearchContext : DbContext
+    public class QuerySearchContext : DbContext
     {
-        public SearchContext():base("SearchStoreModel")
+        public QuerySearchContext():base("SearchStoreModel")
         {
             
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Types().Configure(entity=> entity.ToTable(string.Format("{0}_{1}","Category",entity.ClrType.Name)));
+            modelBuilder.Types().Configure(entity=> entity.ToTable($"{"Category"}_{entity.ClrType.Name}"));
         }
 
         public DbSet<Book> Books { get; set; }

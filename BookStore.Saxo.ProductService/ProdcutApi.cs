@@ -3,7 +3,7 @@ using RestSharp;
 
 namespace BookStore.Saxo.ProductService
 {
-    public class ProdcutApi:IProductApi 
+    public class ProductApi:IProductApi 
     {
         public IEnumerable<Product> Get(string[] isbns)
         {

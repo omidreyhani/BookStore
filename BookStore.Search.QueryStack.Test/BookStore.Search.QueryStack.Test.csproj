@@ -79,10 +79,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BookStore.Infrastructure\BookStore.Infrastructure.csproj">
-      <Project>{1B959729-B731-4938-8DAA-045A26EF53AA}</Project>
-      <Name>BookStore.Infrastructure</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BookStore.Saxo.ProductService\BookStore.Saxo.ProductService.csproj">
       <Project>{4465B06B-89EA-4CC9-8A7F-4522EFFF64AE}</Project>
       <Name>BookStore.Saxo.ProductService</Name>

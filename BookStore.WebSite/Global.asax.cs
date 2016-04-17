@@ -6,8 +6,8 @@ using System.Web.Routing;
 using Autofac;
 using Autofac.Integration.Mvc;
 using BookStore.Autofac;
-using BookStore.Infrastructure;
-using BookStore.WebSite.Areas.CustomerSite.Commands;
+using BookStore.Search.CommandStack;
+using BookStore.Search.CommandStack.Sagas;
 using BookStore.WebSite.Areas.CustomerSite.WorkerServices;
 
 namespace BookStore.WebSite
@@ -46,16 +46,14 @@ namespace BookStore.WebSite
             // Set the dependency resolver to be Autofac.
             AutofacConfig.Configure(builder);
             var container = builder.Build();
-            ConfigureCommandHandler(container);
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
-        }
 
-        public void ConfigureCommandHandler(IContainer container)
-        {
-             IBus bus = container.Resolve<IBus>();
-             UpdateCommandHandler commandHandler = container.Resolve<UpdateCommandHandler>();
-            bus.RegisterCommand(commandHandler);
-           
+
+            container.Resolve<ISearchContextDatabaseInitializer>().Initialize();
+
+
+
+
         }
     }
 }

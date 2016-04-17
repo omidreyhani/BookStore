@@ -6,5 +6,7 @@ namespace BookStore.Search.CommandStack
     public interface IRepository
     {
         void Add(Book book);
+
+        IQueryable<Book> GetBooks();
     }
 }

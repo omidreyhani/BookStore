@@ -7,5 +7,6 @@ namespace BookStore.Search.CommandStack
     {
         void Add(Book book);
         void Save();
+        IRepository Repository { get; set; }
     }
 }

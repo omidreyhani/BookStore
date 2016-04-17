@@ -52,11 +52,31 @@
       <HintPath>..\packages\Autofac.Mvc5.3.3.4\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Memento, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bca5f6a4d14d06d8, processorArchitecture=MSIL">
+      <HintPath>..\packages\MementoFX.1.0.1\lib\net452\Memento.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Memento.Messaging.Postie, Version=1.0.0.0, Culture=neutral, PublicKeyToken=75a7fd450051d0c2, processorArchitecture=MSIL">
+      <HintPath>..\packages\MementoFX.Messaging.Postie.1.0.0\lib\net452\Memento.Messaging.Postie.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.Unity, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -185,7 +205,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Areas\CustomerSite\Commands\UpdateCommandHandler.cs" />
     <Compile Include="Areas\CustomerSite\Controllers\SearchController.cs" />
     <Compile Include="Areas\CustomerSite\CustomerSiteAreaRegistration.cs" />
     <Compile Include="Areas\CustomerSite\Models\BookViewModel.cs" />
@@ -240,6 +259,13 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\angular-animate.js" />
+    <Content Include="Scripts\angular-animate.min.js" />
+    <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular-route.js" />
+    <Content Include="Scripts\angular-route.min.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -264,8 +290,10 @@
     <Content Include="Areas\CustomerSite\Views\web.config" />
     <Content Include="Areas\CustomerSite\Views\_ViewStart.cshtml" />
     <Content Include="Areas\CustomerSite\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\CustomerSite\Views\Home\Index.cshtml" />
     <Content Include="Areas\CustomerSite\Views\Search\Index.cshtml" />
+    <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="Scripts\angular-route.min.js.map" />
+    <Content Include="Scripts\angular-animate.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -308,10 +336,6 @@
     <ProjectReference Include="..\BookStore.Autofac\BookStore.Autofac.csproj">
       <Project>{06826FF8-FC31-44A6-8882-BDA1DCAB858C}</Project>
       <Name>BookStore.Autofac</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BookStore.Infrastructure\BookStore.Infrastructure.csproj">
-      <Project>{1b959729-b731-4938-8daa-045a26ef53aa}</Project>
-      <Name>BookStore.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\BookStore.Saxo.ProductService\BookStore.Saxo.ProductService.csproj">
       <Project>{4465B06B-89EA-4CC9-8A7F-4522EFFF64AE}</Project>

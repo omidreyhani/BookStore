@@ -10,7 +10,7 @@ namespace BookStore.Saxo.ProductService.Test
         [TestMethod]
         public void GetWorksCorrectly()
         {
-            ProdcutApi api =new ProdcutApi();
+            ProductApi api =new ProductApi();
             var result  = api.Get(new [] {"9788741201122","9788702168044"});
             result.Count().Should().Be(2);
         }
