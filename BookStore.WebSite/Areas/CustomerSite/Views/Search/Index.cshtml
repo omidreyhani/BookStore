@@ -5,6 +5,7 @@
 @section scripts{
     <script src="~/Scripts/app/controllers/search.js"></script>
 }
+<div id="loading-bar-container"></div>
 <div class="row" ng-app="bookStore" ng-controller="mainCtrl">
     <div class="col-xs-4">
 
@@ -18,8 +19,8 @@
     </div>
 
     <div class="col-xs-8">
-        <div class="row list">
-            <div class="col-xs-3 item animate-repeat" ng-repeat="book in books">
+        <div class="list">
+            <div class="item animate-repeat" ng-repeat="book in books">
                 <a ng-href="{{book.Url}}"><img class="img-rounded center-block img-fluid" ng-src="{{book.Imageurl}}" /></a>
                 <div class="title">
                     <a ng-href="{{book.Url}}">{{book.Title}}</a>

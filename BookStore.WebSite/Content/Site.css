@@ -20,15 +20,27 @@ textarea {
 }
 .list .item {
     width: 130px;
+        /*border: 1px solid #AAA;*/
+    padding: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    display: inline-block;
+}
+.list a {
+     color:#004B91;
+         font-size: 13px;
+     line-height: 19px;
+    font-family: Arial,sans-seri;
 }
 .list img {
-    height: 150px;
+    height: 135px;
     display: block;
-    margin: 0 auto;
+    /*margin: 0 auto;*/
 }
 
 .list .title {
-    margin: 0 auto;
+    /*margin: 0 auto;*/
 }
 
 .animate-repeat {
