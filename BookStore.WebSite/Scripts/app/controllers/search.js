@@ -1,11 +1,12 @@
 ﻿(function () {
 
     angular.module('bookStore', ['ngAnimate', 'angular-loading-bar'])
-        .controller('mainCtrl', mainCtrl).config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
-            cfpLoadingBarProvider.includeBar = true;
-            cfpLoadingBarProvider.parentSelector = '#loading-bar-container';
-            cfpLoadingBarProvider.spinnerTemplate = '<div><span class="fa fa-spinner">Custom Loading Message...</div>';
-        }]);
+        .controller('mainCtrl', mainCtrl);
+    //.config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
+    //        cfpLoadingBarProvider.includeBar = true;
+    //        cfpLoadingBarProvider.parentSelector = '#loading-bar-container';
+    //        cfpLoadingBarProvider.spinnerTemplate = '<div><span class="fa fa-spinner">Custom Loading Message...</div>';
+    //    }]);
 
     function mainCtrl($scope, $http) {
         $scope.getBooks = getBooks;
