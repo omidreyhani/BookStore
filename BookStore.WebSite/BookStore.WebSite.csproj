@@ -267,6 +267,7 @@
     <Content Include="Scripts\angular-route.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\app\app.js" />
     <Content Include="Scripts\app\controllers\search.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -305,6 +306,10 @@
     <Content Include="Scripts\bower_components\angular-loading-bar\package.json" />
     <Content Include="Scripts\bower_components\angular-loading-bar\PULL_REQUEST_TEMPLATE.md" />
     <Content Include="Scripts\bower_components\angular-loading-bar\README.md" />
+    <Content Include="Scripts\bower_components\angular-ui-notification\dist\angular-ui-notification.css" />
+    <Content Include="Scripts\bower_components\angular-ui-notification\dist\angular-ui-notification.js" />
+    <Content Include="Scripts\bower_components\angular-ui-notification\dist\angular-ui-notification.min.css" />
+    <Content Include="Scripts\bower_components\angular-ui-notification\dist\angular-ui-notification.min.js" />
     <Content Include="Scripts\bower_components\angular\.bower.json" />
     <Content Include="Scripts\bower_components\angular\angular.min.js.gzip" />
     <Content Include="Scripts\bower_components\angular\angular.min.js.map" />

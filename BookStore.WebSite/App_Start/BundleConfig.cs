@@ -21,11 +21,14 @@ namespace BookStore.WebSite
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
               "~/Scripts/angular.js",
               "~/Scripts/angular-animate.js",
-                 "~/Scripts/bower_components/angular-loading-bar/build/loading-bar.js"));
+                 "~/Scripts/bower_components/angular-loading-bar/build/loading-bar.js",
+                 "~/Scripts/bower_components/angular-ui-notification/dist/angular-ui-notification.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
-                      "~/Scripts/bower_components/angular-loading-bar/build/loading-bar.css"));
+                      "~/Scripts/bower_components/angular-loading-bar/build/loading-bar.css",
+            "~/Scripts/bower_components/angular-ui-notification/dist/angular-ui-notification.css"));
         }
     }
 }

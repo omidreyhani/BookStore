@@ -1,18 +1,11 @@
-﻿(function () {
+﻿(function (angular) {
 
-    angular.module('bookStore', ['ngAnimate', 'angular-loading-bar'])
+    angular.module('bookStore')
         .controller('mainCtrl', mainCtrl);
-    //.config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
-    //        cfpLoadingBarProvider.includeBar = true;
-    //        cfpLoadingBarProvider.parentSelector = '#loading-bar-container';
-    //        cfpLoadingBarProvider.spinnerTemplate = '<div><span class="fa fa-spinner">Custom Loading Message...</div>';
-    //    }]);
 
-    function mainCtrl($scope, $http) {
+    function mainCtrl($scope, $http, Notification) {
         $scope.getBooks = getBooks;
-
         $scope.isbns = '9788741201122\n9788702168044';
-
         $scope.loadMore = loadMore;
 
         var all = [];
@@ -35,13 +28,17 @@
         }
 
         function getService(arr) {
-            $http.post("search/GetBooksByIsbns", { isbns: arr }).success(successHandler);
+            $http.post("search/GetBooksByIsbns", { isbns: arr }).then(successHandler,failureHandler);
         }
 
 
-        function successHandler(data) {
-            $scope.books = $scope.books.concat(data);
+        function successHandler(response) {
+            $scope.books = $scope.books.concat(response.data);
+        }
+
+        function failureHandler() {
+              Notification.error({message: 'Server error', delay: 1000});
         }
 
     }
-})();
+})(angular);
