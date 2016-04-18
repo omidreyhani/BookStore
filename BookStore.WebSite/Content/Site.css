@@ -26,6 +26,10 @@ textarea {
     margin-right: 10px;
     border-radius: 5px;
     display: inline-block;
+    transition: transform 0.5s;
+}
+.list .item:hover {
+    transform: scale(1.2);
 }
 .list a {
      color:#004B91;
