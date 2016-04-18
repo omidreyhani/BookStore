@@ -8,6 +8,7 @@ using Autofac.Integration.Mvc;
 using BookStore.Autofac;
 using BookStore.Search.CommandStack;
 using BookStore.Search.CommandStack.Sagas;
+using BookStore.Search.QueryStack;
 using BookStore.WebSite.Areas.CustomerSite.WorkerServices;
 
 namespace BookStore.WebSite
@@ -50,6 +51,9 @@ namespace BookStore.WebSite
 
 
             container.Resolve<ISearchContextDatabaseInitializer>().Initialize();
+            container.Resolve<IQuerySearchContextDatabaseInitializer>().Initialize();
+            
+
 
 
 

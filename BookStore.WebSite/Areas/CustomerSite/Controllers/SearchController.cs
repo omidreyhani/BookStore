@@ -19,7 +19,6 @@ namespace BookStore.WebSite.Areas.CustomerSite.Controllers
             return View();
         }
 
-        //{isbns :['9788741201122','9788702168044']}
         [System.Web.Mvc.HttpPost]
         public ActionResult GetBooksByIsbns(string[] isbns)
         {

@@ -22,7 +22,7 @@ namespace BookStore.Search.CommandStack.Sagas
             UpdateCommand command = T as UpdateCommand;
             if (command == null) return;
             var isbns = command.Isbns;
-            for (int i = 0; i < isbns.Length/10; i++)
+            for (int i = 0; i < isbns.Length/10.0; i++)
             {
                 var chunk = isbns.Skip(i*10).Take(10).ToArray();
 
@@ -30,7 +30,7 @@ namespace BookStore.Search.CommandStack.Sagas
                 var founded = _unitOfWork.Repository.GetBooks().AsNoTracking().Where(x => isbns.Contains(x.Isbn13)).Select(x => x.Isbn13);
                 var notFound = chunk.Except(founded).ToArray();
                 var result = _productApi.Get(notFound);
-                if (!result.Any()) continue;
+                if ( result ==null || !result.Any()) continue;
 
                 foreach (var product in result)
                 {
