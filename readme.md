@@ -1,1 +1,1 @@
-## An example of event sourcing
+## An example of CQRS

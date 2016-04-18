@@ -17,7 +17,7 @@ namespace BookStore.WebSite.Areas.CustomerSite
             context.MapRoute(
                 "CustomerSite_default",
                 "{controller}/{action}/{id}",
-                new {controller="Home", action = "Index", id = UrlParameter.Optional },new []{ "BookStore.WebSite.Areas.CustomerSite.Controllers" }
+                new {controller="Search", action = "Index", id = UrlParameter.Optional },new []{ "BookStore.WebSite.Areas.CustomerSite.Controllers" }
             );
         }
     }

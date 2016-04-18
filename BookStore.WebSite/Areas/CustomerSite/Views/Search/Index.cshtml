@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@section scripts{
+    <script>
+        angular.module('bookStore', ['ngAnimate'])
+            .controller('mainCtrl', mainCtrl);
+
+        function mainCtrl($scope, $http) {
+            $scope.getBooks = getBooks;
+            $scope.isbns = '9788741201122\n9788702168044';
+            $scope.generate = generate;
+            $scope.loadMore = loadMore;
+
+            var all = [];
+            var pageSize = 10;
+            var itemNumber = 0;
+
+            function getBooks() {
+                $scope.books = [];
+                itemNumber = 0;
+                all = $scope.isbns.split('\n');
+                loadMore();
+            }
+
+
+        function loadMore() {
+            var temparray = all.slice(itemNumber, itemNumber + pageSize);
+            itemNumber += pageSize;
+            $scope.enableLoadMore = temparray.length === pageSize;
+            getService(temparray);
+        }
+
+        function getService(arr) {
+            $http.post("search/GetBooksByIsbns", { isbns: arr }).success(successHandler);
+        }
+
+
+        var j = 0;
+        function generate() {
+            var res = '';
+            for (var i = j; i-j < 100; i++) {
+                res +='\n' + String("0000000000000" + i).slice(-13);;
+            }
+            j = i;
+            $scope.isbns +=  res;
+        }
+
+        function successHandler(data) {
+            $scope.books = $scope.books.concat(data);
+        }
+
+        }
+    </script>
+}
+<div class="row" ng-app="bookStore" ng-controller="mainCtrl">
+    <div class="col-xs-4">
+
+        <div class="form-group">
+            <label for="isbns">ISBNS:</label>
+            <textarea class="form-control" rows="15" id="isbns" style="width: 100%;" ng-model="isbns"></textarea>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-default" ng-click="generate()">Generate</button>
+            <button class="btn btn-default" ng-click="getBooks()">Search</button>
+        </div>
+    </div>
+
+    <div class="col-xs-8">
+        <div class="row list">
+            <div class="col-xs-3 item animate-repeat" ng-repeat="book in books">
+                <a ng-href="{{book.Url}}"><img class="img-rounded center-block img-fluid" ng-src="{{book.Imageurl}}" /></a>
+                <div class="title">
+                    <a ng-href="{{book.Url}}">{{book.Title}}</a>
+                </div>
+            </div>
+        </div>
+        <div class="row text-center" ng-show="books.length>0 && enableLoadMore">
+            <button class="btn btn-primary text-center" ng-click="loadMore()">Load More</button>
+        </div>
+    </div>
+</div>
