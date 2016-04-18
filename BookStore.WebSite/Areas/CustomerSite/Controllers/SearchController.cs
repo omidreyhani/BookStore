@@ -23,7 +23,7 @@ namespace BookStore.WebSite.Areas.CustomerSite.Controllers
         [System.Web.Mvc.HttpPost]
         public ActionResult GetBooksByIsbns(FindInformationInputModel findInformationInputModel )
         {
-            if (!ModelState.IsValid)
+            if (findInformationInputModel.Isbns == null || findInformationInputModel.Isbns.Length ==0 )
                 return null;
             return Json(WorkerService.GetBooksViewModel(findInformationInputModel),JsonRequestBehavior.AllowGet);
         }
