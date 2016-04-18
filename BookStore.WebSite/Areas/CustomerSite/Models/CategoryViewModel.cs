@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace BookStore.WebSite.Areas.CustomerSite.Models
+﻿namespace BookStore.WebSite.Areas.CustomerSite.Models
 {
     public class CategoryViewModel
     {
