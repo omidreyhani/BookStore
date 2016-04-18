@@ -1,7 +1,16 @@
 ﻿(function (angular) {
 
     angular.module('bookStore')
-        .controller('mainCtrl', mainCtrl);
+        .controller('mainCtrl', mainCtrl).directive('scrollOnClick', function() {
+        return {
+            restrict: 'A',
+            link: function(scope, $elm) {
+                $elm.on('click', function() {
+                    $("body").animate({ scrollTop: $elm.offset().top }, "slow");
+                });
+            }
+        }
+    });
 
     function mainCtrl($scope, $http, Notification) {
         $scope.getBooks = getBooks;
@@ -19,7 +28,6 @@
             loadMore();
         }
 
-
         function loadMore() {
             var temparray = all.slice(itemNumber, itemNumber + pageSize);
             itemNumber += pageSize;
@@ -28,7 +36,7 @@
         }
 
         function getService(arr) {
-            $http.post("search/GetBooksByIsbns", { isbns: arr }).then(successHandler,failureHandler);
+            $http.post("search/GetBooksByIsbns", { isbns: arr }).then(successHandler, failureHandler);
         }
 
 
@@ -37,8 +45,7 @@
         }
 
         function failureHandler() {
-              Notification.error({message: 'Server error', delay: 1000});
+            Notification.error({ message: 'Server error', delay: 1000 });
         }
-
     }
 })(angular);

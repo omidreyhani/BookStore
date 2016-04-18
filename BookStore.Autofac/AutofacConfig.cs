@@ -18,7 +18,7 @@ namespace BookStore.Autofac
 
             builder.RegisterType<QueryRepository>().As<IQueryRepository>();
             builder.RegisterType<ProductApi>().As<IProductApi>();
-//            builder.RegisterType<FakeProductApi>().As<IProductApi>();
+            //builder.RegisterType<FakeProductApi>().As<IProductApi>();
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>();
             builder.RegisterType<QuerySearchContextDatabaseInitializer>().As<IQuerySearchContextDatabaseInitializer>();
             builder.RegisterType<SearchContextDatabaseInitializer>().As<ISearchContextDatabaseInitializer>();

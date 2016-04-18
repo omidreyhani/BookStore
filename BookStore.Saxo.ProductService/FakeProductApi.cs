@@ -13,7 +13,7 @@ namespace BookStore.Saxo.ProductService
         {
             foreach (var isbn in isbns)
             {
-            //    Thread.Sleep(200);
+                Thread.Sleep(200);
                 yield return new Product()
                 {
                     isbn13 = isbn,
