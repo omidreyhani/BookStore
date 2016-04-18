@@ -25,8 +25,7 @@ namespace BookStore.WebSite.Test
             mock.Setup(x => x.Get(It.IsAny<string[]>()))
                 .Returns((new [] {new Book() { Imageurl = "1", Title = "2", Url = "3"} }).AsQueryable());
             var searchController = new SearchController(new SearchWorkerService(mock.Object,mockUpdate.Object));
-            var result =searchController.GetBooksByIsbns(new []{ "9788741201122" }) as JsonResult;
-
+            var result =searchController.GetBooksByIsbns( new FindInformationInputModel() { Isbns= new []{ "9788741201122" }}) as JsonResult;
             var books = (result.Data as IEnumerable<BookViewModel>).ToList();
             books.Count().Should().Be(1);
             books.First().Imageurl.Should().Be("1");

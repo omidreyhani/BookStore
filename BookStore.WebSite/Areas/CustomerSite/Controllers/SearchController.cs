@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Mvc;
+using BookStore.WebSite.Areas.CustomerSite.Models;
 using BookStore.WebSite.Areas.CustomerSite.WorkerServices;
 
 namespace BookStore.WebSite.Areas.CustomerSite.Controllers
@@ -20,9 +21,11 @@ namespace BookStore.WebSite.Areas.CustomerSite.Controllers
         }
 
         [System.Web.Mvc.HttpPost]
-        public ActionResult GetBooksByIsbns(string[] isbns)
+        public ActionResult GetBooksByIsbns(FindInformationInputModel findInformationInputModel )
         {
-            return Json(WorkerService.GetBooksViewModel(isbns),JsonRequestBehavior.AllowGet);
+            if (!ModelState.IsValid)
+                return null;
+            return Json(WorkerService.GetBooksViewModel(findInformationInputModel),JsonRequestBehavior.AllowGet);
         }
     }
 }

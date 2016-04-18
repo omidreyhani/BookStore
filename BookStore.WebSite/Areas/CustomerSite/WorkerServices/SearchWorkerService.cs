@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Web.Http.ModelBinding;
 using BookStore.Search.CommandStack.Commands;
 using BookStore.Search.CommandStack.Sagas;
 using BookStore.Search.QueryStack;
@@ -19,13 +20,11 @@ namespace BookStore.WebSite.Areas.CustomerSite.WorkerServices
             _updateCommandHandler = updateCommandHandler;
         }
 
-        public IEnumerable<BookViewModel> GetBooksViewModel(string[] isbns)
+        public IEnumerable<BookViewModel> GetBooksViewModel(FindInformationInputModel findInformationInputModel)
         {
-            if(isbns == null || isbns.Length==0) return null;
+            _updateCommandHandler.Execute(new UpdateCommand(findInformationInputModel.Isbns));
 
-            _updateCommandHandler.Execute(new UpdateCommand(isbns));
-
-            var query =_queryRepository.Get(isbns);
+            var query =_queryRepository.Get(findInformationInputModel.Isbns);
 
             return from c in query 
                    select new BookViewModel()

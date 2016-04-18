@@ -209,6 +209,7 @@
     <Compile Include="Areas\CustomerSite\CustomerSiteAreaRegistration.cs" />
     <Compile Include="Areas\CustomerSite\Models\BookViewModel.cs" />
     <Compile Include="Areas\CustomerSite\Models\CategoryViewModel.cs" />
+    <Compile Include="Areas\CustomerSite\Models\FindInformationInputModel.cs" />
     <Compile Include="Areas\CustomerSite\WorkerServices\SearchWorkerService.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />

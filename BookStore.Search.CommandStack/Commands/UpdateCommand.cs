@@ -4,7 +4,7 @@ namespace BookStore.Search.CommandStack.Commands
 {
     public class UpdateCommand:ICommand
     {
-        public string[] Isbns { get; set; }
+        public string[] Isbns { get; }
 
         public UpdateCommand(string[] isbns)
         {

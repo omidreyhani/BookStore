@@ -8,7 +8,6 @@
 
         $scope.isbns = '9788741201122\n9788702168044';
 
-        $scope.generate = generate;
         $scope.loadMore = loadMore;
 
         var all = [];
